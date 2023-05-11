@@ -1,3 +1,9 @@
+//Zoe Gerst
+//gerstz@oregonstate.edu
+//Project 3
+//CS 475
+//5/10/2023
+
 #include <stdio.h>
 #include <math.h>
 #include <omp.h>
@@ -31,8 +37,18 @@ omp_lock_t	Lock;
 void
 Push( int n )
 {
+	if(USE_MUTEX){
+
+		omp_set_lock( &Lock );
+
+	}
 	StackPtr++;
 	Stack[StackPtr] = n;
+	if(USE_MUTEX){
+
+		omp_unset_lock( &Lock );
+
+	}
 }
 
 
@@ -48,8 +64,19 @@ Pop( )
 	if( StackPtr < 0 )
 		return FAILED;
 
+	if(USE_MUTEX){
+
+		omp_set_lock( &Lock );
+
+	}
 	int n = Stack[StackPtr];
 	StackPtr--;
+
+	if(USE_MUTEX){
+
+		omp_unset_lock( &Lock );
+
+	}
 
 	WasPopped[n] = true;
 	return n;
@@ -92,6 +119,12 @@ main( int argc, char *argv[ ] )
 	}
 
 	omp_set_num_threads( 2 );
+
+	if(USE_MUTEX){
+
+		omp_init_lock( &Lock );
+
+	}
 
 	double time0 = omp_get_wtime( );
 	#pragma omp parallel sections
