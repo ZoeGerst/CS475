@@ -1,3 +1,8 @@
+//Zoe Gerst
+//gerstz@oregonstate.edu
+//CS 475
+//5/17/2023
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -11,7 +16,7 @@
 
 #define SSE_WIDTH	4
 #define ALIGNED		__attribute__((aligned(16)))
-
+#define CSV
 
 #define NUMTRIES	100
 
@@ -104,7 +109,7 @@ main( int argc, char *argv[ ] )
 	mms = megaMultAdds;
 	speedup = mms/mmn;
 	fprintf( stderr, "(%6.2lf)\n", speedup );
-	//fprintf( stderr, "[ %8.1f , %8.1f , %8.1f ]\n", C[ARRAYSIZE-1], sumn, sums );
+//	fprintf( stderr, "[ %8.1f , %8.1f , %8.1f ]\n", C[ARRAYSIZE-1], sumn, sums );
 
 	return 0;
 }
@@ -113,13 +118,23 @@ main( int argc, char *argv[ ] )
 void
 NonSimdMul( float *A, float *B, float *C, int n )
 {
-	?????
+	for(int i = 0; i < n; i++){
+
+		C[i] = A[i] * B[i];
+
+	}
 }
 
 float
 NonSimdMulSum( float *A, float *B, int n )
 {
-	?????
+	float sum = 0;
+	for(int i = 0; i < n; i++){
+
+		sum += A[i] * B[i];
+
+	}
+	return sum;
 }
 
 
