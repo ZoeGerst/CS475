@@ -29,7 +29,7 @@
 #define NUMBLOCKS	( NUMTRIALS / BLOCKSIZE )
 
 
-//#define CSV
+#define CSV
 
 // the pins; numbers are constants:
 #define PinAx	3.0f
@@ -47,7 +47,7 @@
 
 // ranges for the random numbers:
 
-#define PROJECT1
+//#define PROJECT1
 
 #ifdef PROJECT1
 const float HoleAx   =  2.90f;
@@ -243,19 +243,19 @@ main( int argc, char *argv[ ] )
 	// ***** be sure to use NUMTRIALS*sizeof(float) as the number of bytes to malloc, not sizeof(hholeaxs)  *****
 	// (because hholeaxs is a float *, its sizeof is only 8)
 	// *********************************
-	cudaMalloc( (void **)(dholeaxs), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholeays), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholears), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholeaxs), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholeays), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholears), NUMTRIALS*sizeof(float) );
 
-	cudaMalloc( (void **)(dholebxs), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholebys), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholebrs), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholebxs), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholebys), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholebrs), NUMTRIALS*sizeof(float) );
 
-	cudaMalloc( (void **)(dholecxs), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholecys), NUMTRIALS*sizeof(float) );
-	cudaMalloc( (void **)(dholecrs), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholecxs), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholecys), NUMTRIALS*sizeof(float) );
+	cudaMalloc( (void **)(&dholecrs), NUMTRIALS*sizeof(float) );
 
-	cudaMalloc( (void **)(dsuccesses), NUMTRIALS*sizeof(int) );
+	cudaMalloc( (void **)(&dsuccesses), NUMTRIALS*sizeof(int) );
 
 	CudaCheckError( 1 );
 
