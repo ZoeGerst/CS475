@@ -1,3 +1,8 @@
+//Zoe Gerst
+//gerstz@oregonstate.edu
+//Project 5
+//CS 475
+
 // Monte Carlo simulation of pins-fitting-into-holes-in-a-plate
 
 // system includes
