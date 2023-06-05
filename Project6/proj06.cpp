@@ -1,3 +1,8 @@
+//Zoe Gerst
+//gerstz@oregonstate.edu
+//CS 475
+//6/4/2023
+
 // 1. Program header
 
 #include <stdio.h>
@@ -32,7 +37,7 @@ cl_command_queue	CmdQueue;
 
 // do we want to print in csv file format?
 
-//#define CSV
+#define CSV
 
 
 float			hA[MATW][MATW];
@@ -133,7 +138,7 @@ main( int argc, char *argv[ ] )
 	if( status != CL_SUCCESS )
 		fprintf( stderr, "clCreateBuffer failed (2)\n" );
 
-	cl_mem dC = clCreateBuffer( Context, CL_MEM_READ_ONLY,  cSize, NULL, &status );
+	cl_mem dC = clCreateBuffer( Context, CL_MEM_WRITE_ONLY,  cSize, NULL, &status );
 	if( status != CL_SUCCESS )
 		fprintf( stderr, "clCreateBuffer failed (3)\n" );
 
@@ -148,7 +153,7 @@ main( int argc, char *argv[ ] )
 	if( status != CL_SUCCESS )
 		fprintf( stderr, "clEnqueueWriteBuffer failed (2)\n" );
 
-	status = clEnqueueWriteBuffer( CmdQueue, dC, CL_FALSE, 0, cSize, hC, 0, NULL, NULL );
+	status = clEnqueueWriteBuffer( CmdQueue, dMW, CL_FALSE, 0, mwSize, &mw, 0, NULL, NULL );
 	if( status != CL_SUCCESS )
 		fprintf( stderr, "clEnqueueWriteBuffer failed (3)\n" );
 
